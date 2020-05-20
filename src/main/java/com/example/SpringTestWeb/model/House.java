@@ -1,4 +1,4 @@
-package com.example.SpringTestWeb.model1;
+package com.example.SpringTestWeb.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Plane1 {
+public class House {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,12 +14,22 @@ public class Plane1 {
 
     private String name;
     private int weight;
+    private int number;
 
-    public Plane1(){}
+    public House(){}
 
-    public Plane1(String name, int weight) {
+    public House(String name, int weight, int number) {
         this.name = name;
         this.weight = weight;
+        this.number = number;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     public String getName() {
@@ -51,27 +61,28 @@ public class Plane1 {
     }
 
     @Override
-    public String toString() {
-        return "Plane1{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", weight=" + weight +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Plane1 plane = (Plane1) o;
+        House house = (House) o;
 
-        return id != null ? id.equals(plane.id) : plane.id == null;
+        return id != null ? id.equals(house.id) : house.id == null;
 
     }
 
     @Override
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "House{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", weight=" + weight +
+                ", number=" + number +
+                '}';
     }
 }

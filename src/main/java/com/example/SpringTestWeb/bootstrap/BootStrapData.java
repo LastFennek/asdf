@@ -1,7 +1,7 @@
-package com.example.SpringTestWeb.bootstrap1;
+package com.example.SpringTestWeb.bootstrap;
 
-import com.example.SpringTestWeb.model1.Plane1;
-import com.example.SpringTestWeb.repositories1.PlaneRepository1;
+import com.example.SpringTestWeb.model.House;
+import com.example.SpringTestWeb.repositories.HouseRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -9,16 +9,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class BootStrapData implements CommandLineRunner {
 
-    private final PlaneRepository1 planeRepository;
+    private final HouseRepository planeRepository;
 
-    public BootStrapData(PlaneRepository1 planeRepository) {
+    public BootStrapData(HouseRepository planeRepository) {
         this.planeRepository = planeRepository;
     }
 
     @Override
     public void run(String... args) throws Exception {
-        Plane1 bigPlane = new Plane1("bigPlane",100);
-        Plane1 smallPlane = new Plane1("smallPlane",20);
+        House bigPlane = new House("bigPlane",100);
+        House smallPlane = new House("smallPlane",20);
 
         planeRepository.save(bigPlane);
         planeRepository.save(smallPlane);

@@ -1,5 +1,8 @@
 package com.example.SpringTestWeb.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sun.istack.NotNull;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,40 +15,19 @@ public class House {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name;
-    private int weight;
+    @NotNull
+    private String owner;
+    private int yearOfConstruction;
     private int number;
 
     public House(){}
 
-    public House(String name, int weight, int number) {
-        this.name = name;
-        this.weight = weight;
+    public House(@JsonProperty("owner") String owner,
+                 @JsonProperty("year") int yearOfConstruction,
+                 @JsonProperty("number") int number) {
+        this.owner = owner;
+        this.yearOfConstruction = yearOfConstruction;
         this.number = number;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
     }
 
     public Long getId() {
@@ -56,8 +38,29 @@ public class House {
         this.id = id;
     }
 
-    public void printHi(){
-        System.out.println("hi");
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public int getYearOfConstruction() {
+        return yearOfConstruction;
+    }
+
+    public void setYearOfConstruction(int yearOfConstruction) {
+        this.yearOfConstruction = yearOfConstruction;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     @Override
@@ -80,8 +83,8 @@ public class House {
     public String toString() {
         return "House{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", weight=" + weight +
+                ", owner='" + owner + '\'' +
+                ", yearOfConstruction=" + yearOfConstruction +
                 ", number=" + number +
                 '}';
     }
